@@ -1,0 +1,295 @@
+{
+    "facil": [
+      {
+        "pergunta": "Quais são os três estados que formam a região Sul do Brasil?",
+        "opcoes": [
+          "São Paulo, Rio de Janeiro e Minas Gerais",
+          "Paraná, Santa Catarina e Rio Grande do Sul",
+          "Goiás, Mato Grosso e Mato Grosso do Sul",
+          "Bahia, Sergipe e Alagoas"
+        ],
+        "resposta": "Paraná, Santa Catarina e Rio Grande do Sul",
+        "usada": false
+      },
+      {
+        "pergunta": "Quantos estados formam a região Sudeste?",
+        "opcoes": ["Dois", "Três", "Quatro", "Cinco"],
+        "resposta": "Quatro",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual é a capital do Brasil, localizada na região Centro-Oeste?",
+        "opcoes": ["Goiânia", "Campo Grande", "Cuiabá", "Brasília"],
+        "resposta": "Brasília",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual tradição cultural é bastante conhecida na região Sul e está relacionada ao consumo de uma bebida feita com erva-mate?",
+        "opcoes": ["Acarajé", "Chimarrão", "Tacacá", "Tereré de coco"],
+        "resposta": "Chimarrão",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual prato é tradicionalmente associado à culinária mineira, no Sudeste?",
+        "opcoes": ["Pão de queijo", "Acarajé", "Arroz com pequi", "Tacacá"],
+        "resposta": "Pão de queijo",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual atividade econômica possui grande destaque na região Centro-Oeste?",
+        "opcoes": ["Pesca marítima", "Indústria naval", "Agronegócio", "Extração de petróleo em alto-mar"],
+        "resposta": "Agronegócio",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual povo já habitava a região Sul antes da colonização europeia?",
+        "opcoes": ["Guarani", "Fenícios", "Romanos", "Gregos"],
+        "resposta": "Guarani",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual manifestação cultural é bastante conhecida na região Sudeste e está associada ao Carnaval?",
+        "opcoes": ["Frevo", "Samba", "Bumba meu boi", "Carimbó"],
+        "resposta": "Samba",
+        "usada": false
+      },
+      {
+        "pergunta": "Em que ano Brasília foi inaugurada?",
+        "opcoes": ["1500", "1822", "1889", "1960"],
+        "resposta": "1960",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual destas comidas é típica da região Centro-Oeste?",
+        "opcoes": ["Barreado", "Arroz com pequi", "Moqueca baiana", "Pão de queijo"],
+        "resposta": "Arroz com pequi",
+        "usada": false
+      }
+    ],
+
+    "medio": [
+      {
+        "pergunta": "Quais povos indígenas são historicamente associados à ocupação da região Sul?",
+        "opcoes": [
+          "Guarani, Kaingang e Xokleng",
+          "Yanomami, Tikuna e Munduruku",
+          "Pataxó, Xavante e Terena",
+          "Tupinambá, Karajá e Macuxi"
+        ],
+        "resposta": "Guarani, Kaingang e Xokleng",
+        "usada": false
+      },
+      {
+        "pergunta": "Quais fluxos migratórios europeus tiveram grande influência na formação cultural da região Sul?",
+        "opcoes": [
+          "Espanhóis e russos",
+          "Alemães e italianos",
+          "Gregos e ingleses",
+          "Franceses e holandeses"
+        ],
+        "resposta": "Alemães e italianos",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual atividade econômica impulsionou a construção de ferrovias e o crescimento de cidades no Sudeste durante parte da história brasileira?",
+        "opcoes": [
+          "Produção de borracha",
+          "Cultivo de algodão",
+          "Produção de café",
+          "Extração de sal"
+        ],
+        "resposta": "Produção de café",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual acontecimento histórico contribuiu para intensificar a ocupação e o desenvolvimento da região Centro-Oeste?",
+        "opcoes": [
+          "Construção de Brasília",
+          "Início da exploração do pré-sal",
+          "Fundação de Salvador",
+          "Construção de Belo Horizonte"
+        ],
+        "resposta": "Construção de Brasília",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual manifestação cultural tradicional do Centro-Oeste utiliza instrumentos como a viola de cocho?",
+        "opcoes": [
+          "Maracatu e frevo",
+          "Cururu e siriri",
+          "Samba e jongo",
+          "Congada e capoeira"
+        ],
+        "resposta": "Cururu e siriri",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual prato representa uma tradição gastronômica do Espírito Santo, estado localizado no Sudeste?",
+        "opcoes": [
+          "Barreado",
+          "Empadão goiano",
+          "Moqueca capixaba",
+          "Arroz carreteiro"
+        ],
+        "resposta": "Moqueca capixaba",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual alternativa apresenta corretamente os principais setores econômicos da região Sudeste?",
+        "opcoes": [
+          "Indústria, finanças, tecnologia e serviços",
+          "Apenas agricultura familiar e pesca",
+          "Somente extrativismo vegetal",
+          "Exclusivamente turismo ecológico"
+        ],
+        "resposta": "Indústria, finanças, tecnologia e serviços",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual é uma característica importante da diversidade religiosa brasileira?",
+        "opcoes": [
+          "Existe apenas uma religião predominante em todas as regiões",
+          "Todas as pessoas seguem as mesmas tradições religiosas",
+          "Há diferentes crenças, religiões e pessoas sem religião",
+          "As religiões de matriz africana não fazem parte da cultura brasileira"
+        ],
+        "resposta": "Há diferentes crenças, religiões e pessoas sem religião",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual região brasileira se destaca pela presença do Pantanal e de atividades ligadas à pecuária?",
+        "opcoes": [
+          "Sul",
+          "Sudeste",
+          "Centro-Oeste",
+          "Nordeste"
+        ],
+        "resposta": "Centro-Oeste",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual alternativa apresenta manifestações culturais associadas ao Sudeste?",
+        "opcoes": [
+          "Samba, Carnaval, congadas e jongo",
+          "Cururu, siriri e viola de cocho",
+          "Chimarrão, fandango e tradições gaúchas",
+          "Carimbó, boi-bumbá e ciranda"
+        ],
+        "resposta": "Samba, Carnaval, congadas e jongo",
+        "usada": false
+      }
+    ],
+
+    "dificil": [
+      {
+        "pergunta": "Por que não podemos afirmar que a cultura da região Sul é formada exclusivamente pela influência europeia?",
+        "opcoes": [
+          "Porque a região não recebeu imigrantes europeus",
+          "Porque os povos indígenas já habitavam a região e também contribuíram para sua formação cultural",
+          "Porque a região foi formada apenas por migrantes do Sudeste",
+          "Porque não existem manifestações culturais tradicionais no Sul"
+        ],
+        "resposta": "Porque os povos indígenas já habitavam a região e também contribuíram para sua formação cultural",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual relação histórica explica parte do desenvolvimento econômico da região Sudeste?",
+        "opcoes": [
+          "A mineração e a produção cafeeira impulsionaram cidades, ferrovias e atividades comerciais",
+          "A pesca marítima foi responsável pela industrialização de Minas Gerais",
+          "A produção de borracha foi a principal responsável pela expansão de São Paulo",
+          "A construção de Brasília iniciou a mineração no Rio de Janeiro"
+        ],
+        "resposta": "A mineração e a produção cafeeira impulsionaram cidades, ferrovias e atividades comerciais",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual foi uma consequência importante da construção de Brasília para a região Centro-Oeste?",
+        "opcoes": [
+          "A redução da população regional",
+          "O fim das atividades agropecuárias",
+          "O estímulo à migração e à expansão da infraestrutura regional",
+          "A transferência da capital para o Sul"
+        ],
+        "resposta": "O estímulo à migração e à expansão da infraestrutura regional",
+        "usada": false
+      },
+      {
+        "pergunta": "O que a diversidade étnico-racial das regiões brasileiras demonstra sobre a formação da sociedade?",
+        "opcoes": [
+          "Que todas as regiões possuem uma única origem cultural",
+          "Que a sociedade brasileira foi formada por diferentes povos e processos históricos",
+          "Que somente os imigrantes europeus contribuíram para a população",
+          "Que as diferenças culturais desapareceram ao longo do tempo"
+        ],
+        "resposta": "Que a sociedade brasileira foi formada por diferentes povos e processos históricos",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual alternativa apresenta corretamente a relação entre região e atividade econômica de destaque?",
+        "opcoes": [
+          "Sul — exclusivamente mineração",
+          "Sudeste — apenas pecuária extensiva",
+          "Centro-Oeste — agronegócio e pecuária",
+          "Centro-Oeste — indústria naval e pesca oceânica"
+        ],
+        "resposta": "Centro-Oeste — agronegócio e pecuária",
+        "usada": false
+      },
+      {
+        "pergunta": "Por que a culinária regional é considerada uma expressão da identidade cultural?",
+        "opcoes": [
+          "Porque os pratos são iguais em todas as regiões",
+          "Porque representa somente hábitos alimentares modernos",
+          "Porque reúne ingredientes locais, influências históricas e tradições de diferentes povos",
+          "Porque não possui relação com os processos migratórios"
+        ],
+        "resposta": "Porque reúne ingredientes locais, influências históricas e tradições de diferentes povos",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual atitude representa respeito à diversidade religiosa no ambiente profissional?",
+        "opcoes": [
+          "Impor uma crença aos colegas",
+          "Fazer piadas sobre religiões diferentes",
+          "Evitar contratar pessoas de determinadas religiões",
+          "Respeitar as crenças e garantir tratamento igualitário"
+        ],
+        "resposta": "Respeitar as crenças e garantir tratamento igualitário",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual alternativa representa corretamente uma diferença histórica entre as três regiões estudadas?",
+        "opcoes": [
+         "Sul: imigração europeia; Sudeste: mineração e café; Centro-Oeste: ocupação do interior e expansão agropecuária",
+         "Sul: construção de Brasília; Sudeste: exploração do Pantanal; Centro-Oeste: produção cafeeira",
+         "Sul: mineração de ouro como única atividade; Sudeste: cultura exclusivamente indígena; Centro-Oeste: industrialização naval",
+         "Sul: ausência de imigração; Sudeste: ocupação recente; Centro-Oeste: colonização exclusivamente europeia"
+        ],
+        "resposta":"Sul: imigração europeia; Sudeste: mineração e café; Centro-Oeste: ocupação do interior e expansão agropecuária",
+        "usada": false
+      },
+      {
+        "pergunta": "De acordo com a proposta do seminário, por que é importante conhecer a diversidade cultural brasileira?",
+        "opcoes": [
+          "Para estabelecer qual região possui a cultura mais importante",
+          "Para reconhecer diferentes contribuições culturais e combater preconceitos",
+          "Para substituir tradições regionais por costumes nacionais",
+          "Para separar os grupos sociais de acordo com suas origens"
+        ],
+        "resposta": "Para reconhecer diferentes contribuições culturais e combater preconceitos",
+        "usada": false
+      },
+      {
+        "pergunta": "Qual princípio deve orientar a convivência entre pessoas de diferentes origens culturais e religiosas?",
+        "opcoes": [
+          "Superioridade cultural",
+          "Padronização dos costumes",
+          "Respeito às diferenças e igualdade de direitos e dignidade",
+          "Exclusão de manifestações culturais minoritárias"
+        ],
+        "resposta": "Respeito às diferenças e igualdade de direitos e dignidade",
+        "usada": false
+      }
+    ]
+  }
