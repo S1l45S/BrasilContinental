@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 import { getSocket } from "@/lib/socket";
@@ -35,6 +34,12 @@ const boardData = [
   { casa: "Fim", area: "fim" },
 ];
 
+function positionLabel(pos) {
+  if (pos <= 0) return "Início";
+  if (pos >= boardData.length - 1) return "Fim";
+  return `Casa ${pos}`;
+}
+
 export default function Game() {
   const router = useRouter();
 
@@ -58,6 +63,10 @@ export default function Game() {
 
   const isMyTurn =
     room?.currentPlayerId === myId;
+
+  // Mantém a sala atual acessível dentro dos listeners do socket.
+  const roomRef = useRef(null);
+  roomRef.current = room;
 
 
   useEffect(() => {
@@ -99,11 +108,18 @@ export default function Game() {
       setMessage(
         data.playerId === playerId
           ? "Você está rolando o dado!"
-          : `${room?.players.find((p) => p.id === data.playerId)?.name || "Outro jogador"} está rolando o dado!`
+          : `${roomRef.current?.players.find((p) => p.id === data.playerId)?.name || "Outro jogador"} está rolando o dado!`
       );
 
       setMovement(null);
     }
+
+    const onMovePlayer = (data) => {
+      setMovement(data);
+      setDiceRolling(false);
+
+      setMessage("Movimentando peão...");
+    };
 
     function onRollResult(data) {
       setDiceResult(data.dice);
@@ -168,6 +184,7 @@ export default function Game() {
 
     connection.on("connect", onConnect);
     connection.on("game-state", onState);
+    connection.on("move-player", onMovePlayer);
     connection.on("your-question", onQuestion);
     connection.on("roll-animation", onRollAnimation);
     connection.on("roll-result", onRollResult);
@@ -192,6 +209,7 @@ export default function Game() {
     return () => {
       connection.off("connect", onConnect);
       connection.off("game-state", onState);
+      connection.off("move-player", onMovePlayer);
       connection.off("your-question", onQuestion);
       connection.off("roll-animation", onRollAnimation);
       connection.off("roll-result", onRollResult);
@@ -199,6 +217,8 @@ export default function Game() {
       connection.off("game-won", onWin);
       connection.off("game-error", onError);
       connection.off("join-error", onJoinError);
+      connection.off("room-reset", onRoomReset);
+      window.removeEventListener("pagehide", handlePageHide);
     };
   }, [router]);
 
@@ -211,6 +231,10 @@ export default function Game() {
   function markReady() {
     socket?.emit("toggle-ready");
   }
+
+  const handleMovementComplete = useCallback(() => {
+  setMovement(null);
+}, []);
 
   function rollDice() {
     if (!isMyTurn || question || !room || room.status !== "playing") {
@@ -264,8 +288,8 @@ export default function Game() {
   return (
     <main className="h-dvh w-full overflow-hidden flex flex-col bg-gradient-to-br from-[#063D2B] to-[#087C45] text-white">
 
-      <header className="h-16 shrink-0 flex items-center justify-between px-4 md:px-8 border-b border-white/10">
-        <h1 className="font-black text-xl md:text-2xl text-[#F5D547]">
+      <header className="h-12 md:h-16 shrink-0 flex items-center justify-between px-4 md:px-8 border-b border-white/10">
+        <h1 className="font-black text-base md:text-2xl text-[#F5D547]">
           BRASIL CONTINENTAL
         </h1>
 
@@ -275,8 +299,8 @@ export default function Game() {
       </header>
 
       {room.status === "waiting" && (
-        <section className="flex-1 min-h-0 overflow-y-auto p-4 flex items-center justify-center">
-          <div className="bg-white text-[#063D2B] rounded-2xl p-6 w-full max-w-xl space-y-5">
+        <section className="flex-1 min-h-0 overflow-y-auto p-3 md:p-4 flex">
+          <div className="bg-white text-[#063D2B] rounded-2xl p-4 md:p-6 w-full max-w-xl space-y-5 m-auto">
 
             <h2 className="text-2xl font-black text-center">
               Sala de espera
@@ -379,96 +403,103 @@ export default function Game() {
       {room.status !== "waiting" && (
         <section className="flex-1 min-h-0 flex flex-col md:flex-row gap-2 p-2 overflow-hidden">
 
-          <div className="flex-1 min-w-0 min-h-0">
+          <div className="relative flex-1 min-w-0 min-h-0">
             <Board
               players={room.players}
               boardData={boardData}
+              movement={movement}
+              onMovementComplete={handleMovementComplete}
+              currentPlayerId={room.currentPlayerId}
             />
           </div>
 
-          <aside className="w-full md:w-64 shrink-0 bg-white/10 rounded-xl p-3 flex flex-col gap-3 overflow-y-auto">
+          <aside className="w-full md:w-72 shrink-0 bg-white/10 rounded-2xl p-2 md:p-3 flex flex-col gap-2 md:gap-3 md:overflow-y-auto">
 
             <div>
-              <h2 className="font-black text-[#F5D547]">
+              <h2 className="hidden md:block font-black text-[#F5D547]">
                 Jogadores
               </h2>
 
-              <div className="space-y-2 mt-2">
+              <div className="flex md:flex-col gap-2 md:mt-2 overflow-x-auto md:overflow-visible pb-1 md:pb-0">
                 {room.players.map((player) => (
                   <div
                     key={player.id}
-                    className={`p-2 rounded-lg flex items-center justify-between ${player.id === room.currentPlayerId
+                    className={`shrink-0 md:shrink p-2 rounded-lg flex items-center justify-between gap-3 ${player.id === room.currentPlayerId
                       ? "bg-[#F5D547] text-[#063D2B]"
                       : "bg-white/10"
                       }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <span
-                        className="w-3 h-3 rounded-full shrink-0"
+                        className="w-3 h-3 rounded-full shrink-0 border border-white"
                         style={{ backgroundColor: player.color }}
                       />
 
-                      <span className="font-bold truncate text-sm">
+                      <span className="font-bold truncate text-xs md:text-sm max-w-[7rem] md:max-w-none">
                         {player.name}
                         {player.id === myId ? " (Você)" : ""}
                       </span>
                     </div>
 
-                    <span className="text-xs font-bold">
-                      Casa {player.pos + 1}
+                    <span className="text-xs font-bold whitespace-nowrap">
+                      {positionLabel(player.pos)}
                     </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="border-t border-white/20 pt-3">
-              <p className="text-sm font-bold">
-                Vez de:
-              </p>
+            <div className="flex items-center gap-3 md:flex-col md:border-t md:border-white/20 md:pt-3">
+              {room.status === "playing" && (
+                <div className="shrink-0">
+                  <Dado
+                    value={diceResult || 1}
+                    rolling={diceRolling}
+                    disabled={!isMyTurn || !!question || diceRolling || !!room.animation}
+                    onRoll={rollDice}
+                  />
+                </div>
+              )}
 
-              <p className="text-[#F5D547] font-black">
-                {currentPlayer?.name || "Aguardando"}
-              </p>
-            </div>
-
-            {room.status === "playing" && (
-              <div className="flex flex-col items-center gap-3">
-                <Dado
-                  value={diceResult || 1}
-                  rolling={diceRolling}
-                  disabled={!isMyTurn || !!question || diceRolling || !!room.animation}
-                  onRoll={rollDice}
-                />
-
-                <p className="text-sm font-bold text-center">
-                  {diceRolling
-                    ? "O dado está girando..."
-                    : isMyTurn
-                      ? "É sua vez! Clique no dado."
-                      : "Aguardando sua vez..."}
+              <div className="flex-1 min-w-0 md:w-full text-left md:text-center space-y-0.5">
+                <p className="text-xs md:text-sm font-bold text-white/80">
+                  Vez de:{" "}
+                  <span className="text-[#F5D547] font-black">
+                    {currentPlayer?.name || "Aguardando"}
+                  </span>
                 </p>
+
+                {room.status === "playing" && (
+                  <p className="text-xs md:text-sm font-bold">
+                    {diceRolling
+                      ? "O dado está girando..."
+                      : isMyTurn
+                        ? "É sua vez! Toque no dado."
+                        : "Aguardando sua vez..."}
+                  </p>
+                )}
+
+                {message && (
+                  <p className="text-xs md:text-sm text-[#F5D547]">
+                    {message}
+                  </p>
+                )}
               </div>
-            )
-            }
-            {message && (
-              <p className="text-center text-sm text-[#F5D547]">
-                {message}
-              </p>
-            )}
-            <button
-              onClick={exitGame}
-              className="w-full rounded-xl p-3 bg-red-500 text-white font-bold hover:bg-red-600"
-            >
-              Sair da sala
-            </button>
+
+              <button
+                onClick={exitGame}
+                className="shrink-0 md:w-full rounded-xl px-3 py-2 md:p-3 bg-red-500 text-white text-sm font-bold hover:bg-red-600"
+              >
+                Sair<span className="hidden md:inline"> da sala</span>
+              </button>
+            </div>
           </aside>
         </section>
       )}
 
       {question && isMyQuestion && (
-        <div className="fixed inset-0 z-40 bg-black/70 flex items-center justify-center p-4">
-          <div className="w-full max-w-xl">
+        <div className="fixed inset-0 z-40 bg-black/70 overflow-y-auto flex p-3 md:p-4">
+          <div className="w-full max-w-xl m-auto">
             <Questionario
               question={question}
               onAnswer={answerQuestion}
